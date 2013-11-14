@@ -1,4 +1,5 @@
 #include <wiringPi.h>
+#include <stdio.h>
 
 #define T 350
 
@@ -25,8 +26,8 @@ stop() {
 }
 
 common() {
-	x();o();o();o();
-	o();o();o();o();
+	x();o();o();o(); // B
+	o();o();o();o(); // 1
 	o();x();x();
 }
 
@@ -42,13 +43,14 @@ off() {
 	stop();
 }
 
-main ()
+int main ( int argc, char *argv[] )
 {
+  printf("The argument supplied is %s\n", argv[1]);
   wiringPiSetup () ;
   pinMode (0, OUTPUT) ;
   for (;;)
   {
-	on();on();on();on();
+	on();on();on();on(); 
 	delay(1000);
 	off();off();off();off();
 	delay(1000);  
