@@ -46,13 +46,22 @@ off() {
 int main ( int argc, char *argv[] )
 {
   printf("The argument supplied is %s\n", argv[1]);
-  wiringPiSetup () ;
-  pinMode (0, OUTPUT) ;
-  for (;;)
+  char *group = argv[1];
+  char *number = argv[2];
+  char *command = argv[3];
+ 
+  printf("input = ", *group, *number, *command);
+/*for (;;)
   {
 	on();on();on();on(); 
 	delay(1000);
 	off();off();off();off();
 	delay(1000);  
 	}
+*/
+}
+
+init() {
+  wiringPiSetup () ;
+  pinMode (0, OUTPUT) ;  
 }
