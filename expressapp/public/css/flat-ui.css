@@ -3397,7 +3397,7 @@ fieldset[disabled] .twitter-typeahead .tt-hint {
   margin-top: 0;
   opacity: 0;
   position: absolute;
-  right: 19px;
+  right: 5px;
   top: 100%;
   width: 0;
   z-index: 10;
