@@ -1,14 +1,37 @@
- 
- $("div.controll").find("a").click(function(){
-    if ($(this).hasClass("off")) {
-      $(this).addClass("on");
-      $(this).removeClass("off");
-      //$(this).text("On");
-    } else {
-      $(this).addClass("off");
-      $(this).removeClass("on");
-      //$(this).text("Off");
-    }
-    $.post('/lampa');
-  });
-
+$(document).ready(function () {
+    $.get('/lampa', function (lamps) {
+        $('#loading').remove();
+        console.log(lamps);
+        lamps.forEach(function (lamp) {
+            var control = '<div class="controll"> ' +
+                '<div class="button">' +
+                '<a href="#fakelink" class="btn btn-block btn-lg btn-primary on">' + lamp.name + '</a>' +
+                '</div>' +
+                '</div>';
+            if (lamp.type === 'dimmer') {
+                control = '<div class="controll">' +
+                    '<p>' + lamp.name + '</p>' +
+                    '<div id="slider" class="ui-slider">' +
+                    '<div class="ui-slider-segment"></div>' +
+                    '<div class="ui-slider-segment"></div>' +
+                    '<div class="ui-slider-segment"></div>' +
+                    '</div>' +
+                    '</div>';
+            }
+            $('div.dynamiccontrols').append(control);
+        });
+        $("div.controll").find("a").click(function (event) {
+            var btn = $(this);
+            if (btn.hasClass("off")) {
+                btn.addClass("on");
+                btn.removeClass("off");
+                //btn.text("On");
+            } else {
+                btn.addClass("off");
+                btn.removeClass("on");
+                //btn.text("Off");
+            }
+            $.post('/lampa');
+        });
+    });
+});
