@@ -5,15 +5,31 @@ var app = express();
 //  res.send('Hello World');
 //});
 
-app.post('/lampa', function(req,res){
-  console.log("POST!");
-  var exec = require('child_process').exec;
-  exec ("ls -la", console.log);
-  res.send();
+var Nedb = require('nedb');
+var lampsdb = new Nedb({ filename: 'db/lamps.db', autoload: true });
+
+// Fyll databasen om den är tom
+lampsdb.find({}, function (err, lamps) {
+    if (lamps.length === 0) {
+        lampsdb.insert({ name: 'Vardagsrum'});
+    }
+});
+
+app.get('/lampa', function (req, res) {
+    lampsdb.find({}, function (err, lamps) {
+        res.send(lamps);
+    })
+});
+
+app.post('/lampa', function (req, res) {
+    console.log("POST!");
+    var exec = require('child_process').exec;
+    exec("ls -la", console.log);
+    res.send();
 });
 
 app.use(express.static(__dirname + '/public'));
 
-var server = app.listen(3000, function() {
+var server = app.listen(3000, function () {
     console.log('Listening on port %d', server.address().port);
 });
