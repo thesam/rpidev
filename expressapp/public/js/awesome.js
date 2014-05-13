@@ -1,3 +1,29 @@
+function updateSliders() {
+   // jQuery UI Sliders
+    var $slider = $("#slider");
+    if ($slider.length) {
+      $slider.slider({
+        min: 1,
+        max: 5,
+        value: 2,
+        orientation: "horizontal",
+        range: "min"
+      }).addSliderSegments($slider.slider("option").max);
+    }
+
+    var $verticalSlider = $("#vertical-slider");
+    if ($verticalSlider.length) {
+      $verticalSlider.slider({
+        min: 1,
+        max: 5,
+        value: 3,
+        orientation: "vertical",
+        range: "min"
+      }).addSliderSegments($verticalSlider.slider("option").max, "vertical");
+    }
+};
+
+
 $(document).ready(function () {
     $.get('/lampa', function (lamps) {
         $('#loading').remove();
@@ -24,6 +50,7 @@ $(document).ready(function () {
             }
             $('div.dynamiccontrols').append(control);
         });
+	updateSliders();
         $("div.controll").click(function (event) {
             var idForControll = $(this).attr('id');
             var btn = $(this).find('a');

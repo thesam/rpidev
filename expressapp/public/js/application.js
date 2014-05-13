@@ -42,29 +42,6 @@ String.prototype.repeat = function(num) {
     // Tags Input
     $(".tagsinput").tagsInput();
 
-    // jQuery UI Sliders
-    var $slider = $("#slider");
-    if ($slider.length) {
-      $slider.slider({
-        min: 1,
-        max: 5,
-        value: 2,
-        orientation: "horizontal",
-        range: "min"
-      }).addSliderSegments($slider.slider("option").max);
-    }
-
-    var $verticalSlider = $("#vertical-slider");
-    if ($verticalSlider.length) {
-      $verticalSlider.slider({
-        min: 1,
-        max: 5,
-        value: 3,
-        orientation: "vertical",
-        range: "min"
-      }).addSliderSegments($verticalSlider.slider("option").max, "vertical");
-    }
-
     // Placeholders for input/textarea
     $(":text, textarea").placeholder();
 
