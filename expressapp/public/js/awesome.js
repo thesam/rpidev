@@ -1,25 +1,25 @@
 function updateSliders() {
-   // jQuery UI Sliders
+    // jQuery UI Sliders
     var $slider = $("#slider");
     if ($slider.length) {
-      $slider.slider({
-        min: 1,
-        max: 5,
-        value: 2,
-        orientation: "horizontal",
-        range: "min"
-      }).addSliderSegments($slider.slider("option").max);
+        $slider.slider({
+            min: 1,
+            max: 5,
+            value: 2,
+            orientation: "horizontal",
+            range: "min"
+        }).addSliderSegments($slider.slider("option").max);
     }
 
     var $verticalSlider = $("#vertical-slider");
     if ($verticalSlider.length) {
-      $verticalSlider.slider({
-        min: 1,
-        max: 5,
-        value: 3,
-        orientation: "vertical",
-        range: "min"
-      }).addSliderSegments($verticalSlider.slider("option").max, "vertical");
+        $verticalSlider.slider({
+            min: 1,
+            max: 5,
+            value: 3,
+            orientation: "vertical",
+            range: "min"
+        }).addSliderSegments($verticalSlider.slider("option").max, "vertical");
     }
 };
 
@@ -29,28 +29,28 @@ $(document).ready(function () {
         $('#loading').remove();
         console.log(lamps);
         lamps.forEach(function (lamp) {
-          var id = lamp._id;
+            var id = lamp._id;
             if (lamp.type == 'simple') {
-              var control = '<div id='+id+' class="controll"> ' +
-                  '<div class="button">' +
-                  '<a href="#fakelink" class="btn btn-block btn-lg btn-primary on">' + lamp.name + '</a>' +
-                  '</div>' +
-                  '</div>';
+                var control = '<div id=' + id + ' class="controll"> ' +
+                    '<div class="button">' +
+                    '<a href="#fakelink" class="btn btn-block btn-lg btn-primary on">' + lamp.name + '</a>' +
+                    '</div>' +
+                    '</div>';
             }
             if (lamp.type === 'dimmer') {
                 control =
-                  '<div id='+id+' class="controll">' +
+                    '<div id=' + id + ' class="controll">' +
                     '<p>' + lamp.name + '</p>' +
                     '<div id="slider" class="ui-slider">' +
-                      '<div class="ui-slider-segment"></div>' +
-                      '<div class="ui-slider-segment"></div>' +
-                      '<div class="ui-slider-segment"></div>' +
+                    '<div class="ui-slider-segment"></div>' +
+                    '<div class="ui-slider-segment"></div>' +
+                    '<div class="ui-slider-segment"></div>' +
                     '</div>' +
-                  '</div>';
+                    '</div>';
             }
             $('div.dynamiccontrols').append(control);
         });
-	updateSliders();
+        updateSliders();
         $("div.controll").click(function (event) {
             var idForControll = $(this).attr('id');
             var btn = $(this).find('a');
@@ -64,7 +64,13 @@ $(document).ready(function () {
                 //btn.text("Off");
             }
 
-            $.post('/lampa/'+idForControll);
+            $.ajax({
+                url: '/lampa/' + idForControll,
+                type: 'PUT',
+                success: function (result) {
+                    // Do something with the result
+                }
+            });
         });
     });
 });

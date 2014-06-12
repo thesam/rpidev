@@ -1,6 +1,9 @@
 var express = require('express');
 var app = express();
 
+// Needed to parse JSON body from POST/PUT
+app.use(express.json());
+
 //app.get('/', function(req, res){
 //  res.send('Hello World');
 //});
@@ -16,14 +19,23 @@ lampsdb.find({}, function (err, lamps) {
     }
 });
 
+// List all lamps
 app.get('/lampa', function (req, res) {
     lampsdb.find({}, function (err, lamps) {
-      console.log(lamps);
+        console.log(lamps);
         res.send(lamps);
     })
 });
 
-app.post('/lampa/:id', function (req, res) {
+// Add new lamp
+app.post('/lampa', function (req, res) {
+    console.log(req.body);
+    lampsdb.insert({ name: 'TODO: Read name from req.body', type: 'simple', state: 'on'});
+    res.send();
+});
+
+// Change state of a lamp
+app.put('/lampa/:id', function (req, res) {
     var exec = require('child_process').exec;
     //exec("ls -la", console.log);
     var id = req.params.id;
