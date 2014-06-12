@@ -29,8 +29,10 @@ app.get('/lampa', function (req, res) {
 
 // Add new lamp
 app.post('/lampa', function (req, res) {
-    console.log(req.body);
-    lampsdb.insert({ name: 'TODO: Read name from req.body', type: 'simple', state: 'on'});
+    var lampFromRequest = req.body;
+    //TODO: Validate input
+    console.log(lampFromRequest);
+    lampsdb.insert(lampFromRequest);
     res.send();
 });
 
@@ -40,8 +42,14 @@ app.put('/lampa/:id', function (req, res) {
     //exec("ls -la", console.log);
     var id = req.params.id;
     console.log("id = " + id);
+    //TODO: Extract lamp from req.body
+    //TODO: Validate input
+    //TODO: Find lamp i db
+    //TODO: Overwrite lamp in db
     res.send();
 });
+
+//TODO: app.delete(..)
 
 app.use(express.static(__dirname + '/public'));
 
