@@ -25,7 +25,7 @@
   </head>
   <body>
     <div class="content">
-    	<header>
+    	<div id="header">
       		<div id="title">
    		   		<h4>Settings</h4>
       		</div>
@@ -39,14 +39,32 @@
                   </ul>
         		</span>
 			</div>
-      	<header>
+      	</div>
       	
       	<div>
       		<div class="button">
 				<span onclick="history.back(-1)" class="fui-arrow-left"> Go back</span>
       		</div>
 		</div>
-
+		<div id="addNewControll">
+			<div class="form-group">
+	        	<input type="text" value="" placeholder="Name on control" class="form-control">
+        	</div>
+			<div class="btn-group select select-block"><button class="btn dropdown-toggle clearfix btn-primary" data-toggle="dropdown">
+				<span class="filter-option pull-left">Type of control</span>&nbsp;<span class="caret"></span></button><span class="dropdown-arrow dropdown-arrow-inverse"></span>
+				<ul class="dropdown-menu dropdown-inverse" role="menu" style="max-height: 336px; overflow-y: auto; min-height: 108px;">
+					<li rel="0"><a tabindex="-1" href="#" class=""><span class="pull-left">On/Off</span></a></li>
+					<li rel="1"><a tabindex="-1" href="#" class=""><span class="pull-left">Dimmer</span></a></li>
+				</ul>
+			</div>
+			<div class="btn-group select select-block"><button class="btn dropdown-toggle clearfix btn-primary" data-toggle="dropdown">
+				<span class="filter-option pull-left">Brand on control</span>&nbsp;<span class="caret"></span></button><span class="dropdown-arrow dropdown-arrow-inverse"></span>
+				<ul class="dropdown-menu dropdown-inverse" role="menu" style="max-height: 336px; overflow-y: auto; min-height: 108px;">
+					<li rel="0"><a tabindex="-1" href="#" class=""><span class="pull-left">Nexa</span></a></li>
+					<li rel="1"><a tabindex="-1" href="#" class=""><span class="pull-left">Kjell</span></a></li>
+				</ul>
+			</div>
+		</div>
 	</div> <!-- content -->
 
     
