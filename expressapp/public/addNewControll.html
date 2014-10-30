@@ -34,7 +34,7 @@
                   <a href="#" data-toggle="dropdown"><span class="fui-list"></span></a>
                   <span class="dropdown-arrow dropdown-arrow-inverse"></span>
                   <ul class="dropdown-menu dropdown-inverse">
-                    <li><a href="addNewControll.html">Add new controll</a></li>
+                    <li><a href="addNewControll.html">Add new control</a></li>
                     <li><a href="#">Backup settings</a></li>
                   </ul>
         		</span>
@@ -50,20 +50,20 @@
 			<div class="form-group">
 	        	<input type="text" value="" placeholder="Name on control" class="form-control">
         	</div>
-			<div class="btn-group select select-block"><button class="btn dropdown-toggle clearfix btn-primary" data-toggle="dropdown">
-				<span class="filter-option pull-left">Type of control</span>&nbsp;<span class="caret"></span></button><span class="dropdown-arrow dropdown-arrow-inverse"></span>
-				<ul class="dropdown-menu dropdown-inverse" role="menu" style="max-height: 336px; overflow-y: auto; min-height: 108px;">
-					<li rel="0"><a tabindex="-1" href="#" class=""><span class="pull-left">On/Off</span></a></li>
-					<li rel="1"><a tabindex="-1" href="#" class=""><span class="pull-left">Dimmer</span></a></li>
-				</ul>
-			</div>
-			<div class="btn-group select select-block"><button class="btn dropdown-toggle clearfix btn-primary" data-toggle="dropdown">
-				<span class="filter-option pull-left">Brand on control</span>&nbsp;<span class="caret"></span></button><span class="dropdown-arrow dropdown-arrow-inverse"></span>
-				<ul class="dropdown-menu dropdown-inverse" role="menu" style="max-height: 336px; overflow-y: auto; min-height: 108px;">
-					<li rel="0"><a tabindex="-1" href="#" class=""><span class="pull-left">Nexa</span></a></li>
-					<li rel="1"><a tabindex="-1" href="#" class=""><span class="pull-left">Kjell</span></a></li>
-				</ul>
-			</div>
+			<select name="herolist" value="type" class="select-block" style="display: none;">
+				<option value="0" selected="selected">Choose type of control</option>
+				<option value="1">On/Off</option>
+				<option value="2">Dimmer</option>
+			</select>
+
+		<select name="herolist" value="brand" class="select-block" style="display: none;">
+			<option value="0" selected="selected">Choose brand to control</option>
+			<option value="1">Nexa</option>
+			<option value="2">Kjell</option>
+		</select>
+			
+		<a href="#fakelink" class="btn btn-block btn-lg btn-inverse">Add new control</a>
+	  
 		</div>
 	</div> <!-- content -->
 

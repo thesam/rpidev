@@ -74,3 +74,7 @@ $(document).ready(function () {
         });
     });
 });
+
+function addNewLamp() {
+	console.log("*** adding a new lamp ***");
+};
