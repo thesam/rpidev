@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+app.use(express.bodyParser());
 
 // Needed to parse JSON body from POST/PUT
 app.use(express.json());
@@ -29,15 +30,10 @@ app.get('/lampa', function (req, res) {
 
 // Add new lamp
 app.post('/lampa', function (req, res) {
-    console.log("*** server.js app.post() ***");
     var lampFromRequest = req.body;
-    //console.log(arguments[0]);
     //TODO: Validate input
-    console.log("lampFromRequest ="+lampFromRequest);
-    console.log("req = " + req.body.ctrl);
-    console.log("param = "+req.query);
-    console.log("reqbody = "+req.body['name']);
-    //lampsdb.insert(lampFromRequest);
+    //console.log(lampFromRequest);
+    lampsdb.insert(lampFromRequest);
     res.send("New lamp has been added");
 });
 

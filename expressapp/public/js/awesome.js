@@ -77,20 +77,8 @@ $(document).ready(function () {
 
 function addLamp(ctrl) {
   console.log("*** adding a new lamp to database ***");
-  console.log(ctrl);
-  $.ajax({
-    url: 'http://localhost:3000/lampa',
-    type: 'POST',
-    body: {name: "jonas"},
-    success: function () {
-        console.log('Success!');
-    },
-    error: function () {
-        console.log('Error!');
-    }
-  });
-
   console.log(ctrl.name + ctrl.type + ctrl.brand);
+
   $.post('/lampa', ctrl, function (res){
     console.log("response = "+res);
   });
