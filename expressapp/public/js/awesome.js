@@ -27,11 +27,14 @@ function updateSliders() {
 $(document).ready(function () {
     $.get('/lampa', function (lamps) {
         $('#loading').remove();
+
         console.log(lamps);
         lamps.forEach(function (lamp) {
+            console.log(lamp.name);
             var id = lamp._id;
+            var control;
             if (lamp.type == 'simple') {
-                var control = '<div id=' + id + ' class="controll"> ' +
+                control = '<div id=' + id + ' class="controll"> ' +
                     '<div class="button">' +
                     '<a href="#fakelink" class="btn btn-block btn-lg btn-primary on">' + lamp.name + '</a>' +
                     '</div>' +

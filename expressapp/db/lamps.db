@@ -1,4 +1,3 @@
-{"name":"Fönster, sovrum","type":"dimmer","state":"5","_id":"7PgnCTtRNfS2Jsnt"}
-{"name":"Vardagsrum","type":"simple","state":"on","_id":"tQ3tpUlfiJSue1Ur"}
-{"name":"Kök","type":"On/Off","brand":"Nexa","state":"0","_id":"wjX3XsaEfNJTkXnB"}
-{"name":"asdfasdasdas","type":"On/Off","brand":"Choose brand to control","state":"0","_id":"p9QbBUhpTzHqm1ta"}
+{"name":"Kök","type":"dimmer","state":"5","_id":"1lbH803Rxtx9eLt1"}
+{"name":"Fönster, sovrum","type":"dimmer","state":"5","_id":"561befSw9OJKPtzM"}
+{"name":"Vardagsrum","type":"simple","state":"0","_id":"RjYkFdXnTueSsJLD"}

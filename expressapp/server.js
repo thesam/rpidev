@@ -15,7 +15,10 @@ var lampsdb = new Nedb({ filename: 'db/lamps.db', autoload: true });
 // Fyll databasen om den är tom
 lampsdb.find({}, function (err, lamps) {
     if (lamps.length === 0) {
-        lampsdb.insert({ name: 'Vardagsrum', type: 'simple', state: 'on'});
+        // state = simple = 1 - on, 0 - off.
+        // state = dimmer = 0 - off, 1 -5 different % of dimming
+        lampsdb.insert({ name: 'Kök', type: 'dimmer', state: '5'});
+        lampsdb.insert({ name: 'Vardagsrum', type: 'simple', state: '0'});
         lampsdb.insert({ name: 'Fönster, sovrum', type: 'dimmer', state: '5'});
     }
 });
