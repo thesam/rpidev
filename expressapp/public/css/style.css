@@ -1,5 +1,5 @@
 #header{
-	height:100px;
+	height:70px;
 }
 
 .content {
@@ -58,4 +58,8 @@
 	font-size:0,5em;
 	text-align: center;
 	margin-bottom: 5px;
+}
+
+.button{
+	margin-bottom:5px;
 }

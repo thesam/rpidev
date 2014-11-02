@@ -1,6 +1,6 @@
 function updateSliders() {
     // jQuery UI Sliders
-    var $slider = $("#slider");
+    var $slider = $(".slider");
     if ($slider.length) {
         $slider.slider({
             min: 1,
@@ -44,7 +44,7 @@ $(document).ready(function () {
                 control =
                     '<div id=' + id + ' class="controll">' +
                     '<p>' + lamp.name + '</p>' +
-                    '<div id="slider" class="ui-slider">' +
+                    '<div class="slider" class="ui-slider">' +
                     '<div class="ui-slider-segment"></div>' +
                     '<div class="ui-slider-segment"></div>' +
                     '<div class="ui-slider-segment"></div>' +
@@ -57,16 +57,26 @@ $(document).ready(function () {
         $("div.controll").click(function (event) {
             var idForControll = $(this).attr('id');
             var btn = $(this).find('a');
+
+            var test = $( "div.ui-slider-range" ).find(this);
+            // vi måste ta ut vilket värde dimmern är satt på skicka det till db
+            //var test2 = $(#idForControll).children("div.ui-slider-range").attr("style");
+            //console.log(test);
+
+            var light_mode;
             if (btn.hasClass("off")) {
                 btn.addClass("on");
                 btn.removeClass("off");
+                light_mode = "on";
                 //btn.text("On");
             } else {
                 btn.addClass("off");
                 btn.removeClass("on");
+                light_mode = "off";
                 //btn.text("Off");
             }
 
+            console.log("Setting new state for lamp: " + idForControll+ " to "+ light_mode);
             $.ajax({
                 url: '/lampa/' + idForControll,
                 type: 'PUT',
