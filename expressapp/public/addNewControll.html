@@ -4,8 +4,8 @@
     <meta charset="utf-8">
     <title>LampCtrl</title>
     <meta name="description" content="Flat UI Kit Free is a Twitter Bootstrap Framework design and Theme, this responsive framework includes a PSD and HTML version."/>
-	
-	
+
+
 <meta name="viewport" content="width=device-width, user-scalable=no" />
 
     <!-- Loading Bootstrap -->
@@ -40,34 +40,34 @@
         		</span>
 			</div>
       	</div>
-      	
+
       	<div>
       		<div class="button">
-				<span onclick="history.back(-1)" class="fui-arrow-left"> Go back</span>
+				        <span onclick="history.back(-1)" class="fui-arrow-left button"> Go back</span>
       		</div>
 		</div>
 		<div id="addNewControll">
 			<div class="form-group">
-	        	<input type="text" value="" placeholder="Name on control" class="form-control">
+	        	<input id="ctrl-name" type="text" value="" placeholder="Name on control" class="form-control">
         	</div>
-			<select name="herolist" value="type" class="select-block" style="display: none;">
+			<select id="ctrl-type" name="herolist" value="type" class="select-block" style="display: none;">
 				<option value="0" selected="selected">Choose type of control</option>
 				<option value="1">On/Off</option>
 				<option value="2">Dimmer</option>
 			</select>
 
-		<select name="herolist" value="brand" class="select-block" style="display: none;">
+		<select id="ctrl-brand" name="herolist" value="brand" class="select-block" style="display: none;">
 			<option value="0" selected="selected">Choose brand to control</option>
 			<option value="1">Nexa</option>
 			<option value="2">Kjell</option>
 		</select>
-			
-		<a href="#fakelink" class="btn btn-block btn-lg btn-inverse">Add new control</a>
-	  
+
+		<a href="#fakelink" class="btn btn-block btn-lg btn-inverse add-new-control">Add new control</a>
+
 		</div>
 	</div> <!-- content -->
 
-    
+
     <!-- Load JS here for greater good =============================-->
     <script src="js/jquery-1.8.3.min.js"></script>
     <script src="js/jquery-ui-1.10.3.custom.min.js"></script>
@@ -83,7 +83,9 @@
     <script src="http://vjs.zencdn.net/4.3/video.js"></script>
     <script src="js/application.js"></script>
     <script src="js/awesome.js"></script>
-    
+    <script src="js/addNewLamp.js"></script>
+
+
     <script src="js/bundle.js"></script>
   </body>
 </html>

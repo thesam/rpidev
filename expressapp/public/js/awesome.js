@@ -1,6 +1,6 @@
 function updateSliders() {
     // jQuery UI Sliders
-    var $slider = $("#slider");
+    var $slider = $(".slider");
     if ($slider.length) {
         $slider.slider({
             min: 1,
@@ -27,11 +27,14 @@ function updateSliders() {
 $(document).ready(function () {
     $.get('/lampa', function (lamps) {
         $('#loading').remove();
+
         console.log(lamps);
         lamps.forEach(function (lamp) {
+            console.log(lamp.name);
             var id = lamp._id;
+            var control;
             if (lamp.type == 'simple') {
-                var control = '<div id=' + id + ' class="controll" ctrlType='+lamp.type+'> ' +
+                control = '<div id=' + id + ' class="controll" ctrlType='+lamp.type+'> ' +
                     '<div class="button">' +
                     '<a href="#fakelink" class="btn btn-block btn-lg btn-primary on">' + lamp.name + '</a>' +
                     '</div>' +
@@ -41,7 +44,7 @@ $(document).ready(function () {
                 control =
                     '<div id=' + id + ' class="controll" onclick="setCurrentDimmerLevel(this)" currentDimmerLevel="0" ctrlType='+lamp.type+'>' +
                     '<p>' + lamp.name + '</p>' +
-                    '<div id="slider" class="ui-slider">' +
+                    '<div class="slider" class="ui-slider">' +
                     '<div class="ui-slider-segment"></div>' +
                     '<div class="ui-slider-segment"></div>' +
                     '<div class="ui-slider-segment"></div>' +
@@ -56,6 +59,8 @@ $(document).ready(function () {
             var btn = $(this).find('a');
 			var ctrlState = 0;
 			var test = getCurrentDimmerLevel(this);
+
+            var test = $( "div.ui-slider-range" ).find(this);
             if (btn.hasClass("off")) {
                 btn.addClass("on");
 				ctrlState = 1; // lamp is on
@@ -72,6 +77,7 @@ $(document).ready(function () {
 				ctrlState = getCurrentDimmerLevel(this);
 			}
 
+            console.log("Setting new state for lamp: " + idForControll+ " to "+ light_mode);
             $.ajax({
                 url: '/lampa/' + idForControll+'/'+ctrlState,
                 type: 'PUT',
@@ -83,8 +89,13 @@ $(document).ready(function () {
     });
 });
 
-function addNewLamp() {
-	console.log("*** adding a new lamp ***");
+function addLamp(ctrl) {
+  console.log("*** adding a new lamp to database ***");
+  console.log(ctrl.name + ctrl.type + ctrl.brand);
+
+  $.post('/lampa', ctrl, function (res){
+    console.log("response = "+res);
+  });
 };
 
 function setCurrentDimmerLevel(selectedDiv) {

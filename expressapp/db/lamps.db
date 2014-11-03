@@ -1,2 +1,3 @@
-{"name":"Vardagsrum","type":"simple","state":"on","_id":"tQ3tpUlfiJSue1Ur"}
-{"name":"Fönster, sovrum","type":"dimmer","state":"5","_id":"7PgnCTtRNfS2Jsnt"}
+{"name":"Kök","type":"dimmer","state":"5","_id":"1lbH803Rxtx9eLt1"}
+{"name":"Fönster, sovrum","type":"dimmer","state":"5","_id":"561befSw9OJKPtzM"}
+{"name":"Vardagsrum","type":"simple","state":"0","_id":"RjYkFdXnTueSsJLD"}
