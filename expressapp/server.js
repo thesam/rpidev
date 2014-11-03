@@ -37,11 +37,13 @@ app.post('/lampa', function (req, res) {
 });
 
 // Change state of a lamp
-app.put('/lampa/:id', function (req, res) {
+app.put('/lampa/:id/:ctrlState', function (req, res) {
     var exec = require('child_process').exec;
     //exec("ls -la", console.log);
     var id = req.params.id;
+	var ctrlState = req.params.ctrlState;
     console.log("id = " + id);
+	console.log("ctrlState = " + ctrlState);
     //TODO: Extract lamp from req.body
     //TODO: Validate input
     //TODO: Find lamp i db

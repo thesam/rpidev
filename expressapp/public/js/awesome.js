@@ -31,7 +31,7 @@ $(document).ready(function () {
         lamps.forEach(function (lamp) {
             var id = lamp._id;
             if (lamp.type == 'simple') {
-                var control = '<div id=' + id + ' class="controll"> ' +
+                var control = '<div id=' + id + ' class="controll" ctrlType='+lamp.type+'> ' +
                     '<div class="button">' +
                     '<a href="#fakelink" class="btn btn-block btn-lg btn-primary on">' + lamp.name + '</a>' +
                     '</div>' +
@@ -39,7 +39,7 @@ $(document).ready(function () {
             }
             if (lamp.type === 'dimmer') {
                 control =
-                    '<div id=' + id + ' class="controll">' +
+                    '<div id=' + id + ' class="controll" onclick="setCurrentDimmerLevel(this)" currentDimmerLevel="0" ctrlType='+lamp.type+'>' +
                     '<p>' + lamp.name + '</p>' +
                     '<div id="slider" class="ui-slider">' +
                     '<div class="ui-slider-segment"></div>' +
@@ -54,18 +54,26 @@ $(document).ready(function () {
         $("div.controll").click(function (event) {
             var idForControll = $(this).attr('id');
             var btn = $(this).find('a');
+			var ctrlState = 0;
+			var test = getCurrentDimmerLevel(this);
             if (btn.hasClass("off")) {
                 btn.addClass("on");
+				ctrlState = 1; // lamp is on
+				console.log("on " +ctrlState);
                 btn.removeClass("off");
                 //btn.text("On");
             } else {
                 btn.addClass("off");
                 btn.removeClass("on");
+				ctrlState = 0; // lamp is off
                 //btn.text("Off");
             }
+			if(isDimmer){
+				ctrlState = getCurrentDimmerLevel(this);
+			}
 
             $.ajax({
-                url: '/lampa/' + idForControll,
+                url: '/lampa/' + idForControll+'/'+ctrlState,
                 type: 'PUT',
                 success: function (result) {
                     // Do something with the result
@@ -78,3 +86,23 @@ $(document).ready(function () {
 function addNewLamp() {
 	console.log("*** adding a new lamp ***");
 };
+
+function setCurrentDimmerLevel(selectedDiv) {
+	var dimmerLevel = $(selectedDiv).find("div.ui-slider-range.ui-widget-header.ui-corner-all.ui-slider-range-min").attr("style");
+	var regex = /width:\s(\d+)%/g;
+	var match = regex.exec(dimmerLevel); // get value from css
+	var currentDimmerLevel = match[1];
+	$(selectedDiv).attr("currentDimmerLevel", currentDimmerLevel); // set the attribute "currentDimmerLevel" to the new value
+	// console.log("currentDimmerLevel = "+ currentDimmerLevel);
+}
+
+function getCurrentDimmerLevel(object) {
+	return $(object).attr('currentDimmerLevel');
+}
+
+function isDimmer(object) {
+	if($(object).attr('ctrlType') == "dimmer"){
+		return true;
+	}
+	return false;
+}
