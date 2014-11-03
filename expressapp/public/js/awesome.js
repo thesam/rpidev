@@ -57,27 +57,22 @@ $(document).ready(function () {
         $("div.controll").click(function (event) {
             var idForControll = $(this).attr('id');
             var btn = $(this).find('a');
-			var ctrlState = 0;
+			var ctrlState;
 			var test = getCurrentDimmerLevel(this);
 
             var test = $( "div.ui-slider-range" ).find(this);
             if (btn.hasClass("off")) {
                 btn.addClass("on");
-				ctrlState = 1; // lamp is on
-				console.log("on " +ctrlState);
                 btn.removeClass("off");
                 //btn.text("On");
             } else {
                 btn.addClass("off");
                 btn.removeClass("on");
-				ctrlState = 0; // lamp is off
                 //btn.text("Off");
             }
-			if(isDimmer){
-				ctrlState = getCurrentDimmerLevel(this);
-			}
+			ctrlState = getCtrlState(this);
 
-            console.log("Setting new state for lamp: " + idForControll+ " to "+ light_mode);
+            console.log("Setting new state for lamp: " + idForControll+ " to "+ ctrlState);
             $.ajax({
                 url: '/lampa/' + idForControll+'/'+ctrlState,
                 type: 'PUT',
@@ -116,4 +111,19 @@ function isDimmer(object) {
 		return true;
 	}
 	return false;
+}
+
+function getCtrlState(object) {
+	var ctrlState;
+	if(isDimmer(object)){
+		ctrlState = getCurrentDimmerLevel(object);
+	}else{
+		var btn = $(object).find('a');
+		if (btn.hasClass("on")) {
+			ctrlState = 1; // lamp is on
+		} else {
+			ctrlState = 0; // lamp is off
+		}
+	}
+	return ctrlState;
 }
