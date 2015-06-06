@@ -157,7 +157,7 @@ int main ( int argc, char *argv[] )
 {
     init();
     if (argc == 1) {
-        if (strcmp(argv[0],"demo") == 0) {
+        if (strcmp(argv[1],"demo") == 0) {
             nexaOn();
 
             kjellOn('A');
@@ -186,6 +186,9 @@ int main ( int argc, char *argv[] )
                 kjellOff(outlet);
             }
         }
+     }
+
+     if (argc == 5) {
         if (strcmp(argv[1],"nexa") == 0) {
             char *group = argv[2];
             char *number = argv[3];
