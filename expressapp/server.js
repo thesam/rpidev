@@ -20,6 +20,9 @@ lampsdb.find({}, function (err, lamps) {
         lampsdb.insert({ name: 'Kök', type: 'dimmer', state: '5'});
         lampsdb.insert({ name: 'Vardagsrum', type: 'simple', state: '0'});
         lampsdb.insert({ name: 'Fönster, sovrum', type: 'dimmer', state: '5'});
+        lampsdb.insert({ name: 'Kjell A', number: 'A', type: 'simple', state: '0', protocol: 'kjell'});
+        lampsdb.insert({ name: 'Kjell B', number: 'B', type: 'simple', state: '0', protocol: 'kjell'});
+        lampsdb.insert({ name: 'Kjell C', number: 'C', type: 'simple', state: '0', protocol: 'kjell'});
     }
 });
 
@@ -45,12 +48,21 @@ app.put('/lampa/:id/:ctrlState', function (req, res) {
     var exec = require('child_process').exec;
     //exec("ls -la", console.log);
     var id = req.params.id;
-	var ctrlState = req.params.ctrlState;
+    var ctrlState = req.params.ctrlState;
     console.log("id = " + id);
-	console.log("ctrlState = " + ctrlState);
-    //TODO: Extract lamp from req.body
-    //TODO: Validate input
-    //TODO: Find lamp i db
+    console.log("ctrlState = " + ctrlState);
+    lampsdb.findOne({_id: id}, function (err, lamp) {
+        console.log("LAMPA: " + JSON.stringify(lamp.protocol));
+        if (lamp.protocol == "kjell") {
+            //TODO: Validate input!!
+            var state = "off";
+            if (ctrlState == 1) {
+                state = "on";
+            }
+            var cmd = "../transmit kjell " + lamp.number + " " + state;
+            exec(cmd, console.log);
+        }
+    });
     //TODO: Overwrite lamp in db
     res.send();
 });

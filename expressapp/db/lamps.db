@@ -1,3 +1,6 @@
-{"name":"Kök","type":"dimmer","state":"5","_id":"1lbH803Rxtx9eLt1"}
-{"name":"Fönster, sovrum","type":"dimmer","state":"5","_id":"561befSw9OJKPtzM"}
-{"name":"Vardagsrum","type":"simple","state":"0","_id":"RjYkFdXnTueSsJLD"}
+{"name":"Kjell C","number":"C","type":"simple","state":"0","protocol":"kjell","_id":"2IbCmIAOsr7vwDdN"}
+{"name":"Kök","type":"dimmer","state":"5","_id":"5WQ7S4uZnbbZ3kX9"}
+{"name":"Vardagsrum","type":"simple","state":"0","_id":"QWJGxXsd0uAGee4M"}
+{"name":"Kjell A","number":"A","type":"simple","state":"0","protocol":"kjell","_id":"ivkm5LlEt2VRtHez"}
+{"name":"Kjell B","number":"B","type":"simple","state":"0","protocol":"kjell","_id":"jZnuJg1q1iObzvFt"}
+{"name":"Fönster, sovrum","type":"dimmer","state":"5","_id":"u2G4VI3vChPXDbVs"}
