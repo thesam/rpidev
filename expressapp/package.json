@@ -5,7 +5,7 @@
   "private": true,
   "dependencies": {
     "express": "3.4.8",
-    "nedb": "^0.10.5",
+    "nedb": "1.1.2",
     "browserify": "^3.38.0"
   }
 }
