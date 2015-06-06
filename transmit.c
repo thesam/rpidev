@@ -153,7 +153,40 @@ char* pBinFill(long int x,char *so, char fillChar)
 }
 
 int main ( int argc, char *argv[] )
+    init();
 {
+    if (argc == 1) {
+        if (strcmp(argv[0],"demo") == 0) {
+            nexaOn();
+
+            kjellOn('A');
+            delay(500);
+            kjellOn('B');
+            delay(500);
+            kjellOn('C');
+            delay(500);
+            kjellOff('A');
+            delay(500);
+            kjellOff('B');
+            delay(500);
+            kjellOff('C');
+
+            nexaOff();
+        }
+    }
+
+    if (argc == 3) {
+        if (strcmp(argv[0],"kjell") == 0) {
+            char outlet = argv[1][0];
+            if (strcmp(argv[2],"on") == 0) {
+                kjellOn(outlet);
+            }
+            if (strcmp(argv[2],"off") == 0) {
+                kjellOff(outlet);
+            }
+        }
+    }
+
     if (argc == 4) {
         printf("The argument supplied is %s\n", argv[1]);
         char *group = argv[1];
@@ -161,22 +194,6 @@ int main ( int argc, char *argv[] )
         char *command = argv[3];
         printf("input = ", *group, *number, *command);
     }
-    init();
-    nexaOn();
-
-    kjellOn('A');
-    delay(500);
-    kjellOn('B');
-    delay(500);
-    kjellOn('C');
-    delay(500);
-    kjellOff('A');
-    delay(500);
-    kjellOff('B');
-    delay(500);
-    kjellOff('C');
-
-    nexaOff();
 
     cleanup();
 }
