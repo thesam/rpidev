@@ -51,8 +51,18 @@ void kjell(char* msg) {
     }
 }
 
-void kjellOn() {
-    kjell("1111111111000101010101000");
+void kjellOn(char outlet) {
+    char msg[] = "1111111111010101010101000";
+    if (outlet = 'A') {
+        msg[11] = '0';
+    }
+    if (outlet = 'B') {
+        msg[13] = '0';
+    }
+    if (outlet = 'C') {
+        msg[15] = '0';
+    }
+    kjell(msg);
 //		a();        // 1
 //		a();        // 1
 //		a();        // 1
@@ -186,8 +196,10 @@ int main ( int argc, char *argv[] )
     }
     init();
 
-    kjellOn();
+    kjellOn('A');
     nexaOn();
+    delay(1000);
+    kjellOn('B');
     delay(1000);
     nexaOff();
     kjellOff();
