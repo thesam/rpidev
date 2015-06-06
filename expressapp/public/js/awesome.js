@@ -34,9 +34,13 @@ $(document).ready(function () {
             var id = lamp._id;
             var control;
             if (lamp.type == 'simple') {
+                var state = 'on';
+                if (lamp.state == 0) {
+                    state = 'off';
+                }
                 control = '<div id=' + id + ' class="controll" ctrlType='+lamp.type+'> ' +
                     '<div class="button">' +
-                    '<a href="#fakelink" class="btn btn-block btn-lg btn-primary on">' + lamp.name + '</a>' +
+                    '<a href="#fakelink" class="btn btn-block btn-lg btn-primary '+state+'">' + lamp.name + '</a>' +
                     '</div>' +
                     '</div>';
             }
