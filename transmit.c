@@ -145,7 +145,7 @@ int main ( int argc, char *argv[] )
 //    kjellOff();
     // Try all 2^25 combinations
     for (int i = 0; i <= 33554431; i++) {
-        print("msg = %d",i);
+        printf("msg = %d\n",i);
     }
 
     cleanup();
