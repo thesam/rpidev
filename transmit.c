@@ -40,7 +40,7 @@ void kjell(char* msg) {
     int i = 0;
     int j = 0;
     for (i = 0; i < 8; i++) {
-        for (j = 24; j <= 0; j--) {
+        for (j = 0; j < 25; j++) {
             if (msg[j] == '1') {
                 a();
             } else {
