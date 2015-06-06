@@ -176,24 +176,22 @@ int main ( int argc, char *argv[] )
         }
     }
 
-    if (argc == 3) {
-        if (strcmp(argv[0],"kjell") == 0) {
-            char outlet = argv[1][0];
-            if (strcmp(argv[2],"on") == 0) {
+    if (argc == 4) {
+        if (strcmp(argv[1],"kjell") == 0) {
+            char outlet = argv[2][0];
+            if (strcmp(argv[3],"on") == 0) {
                 kjellOn(outlet);
             }
-            if (strcmp(argv[2],"off") == 0) {
+            if (strcmp(argv[3],"off") == 0) {
                 kjellOff(outlet);
             }
         }
-    }
-
-    if (argc == 4) {
-        printf("The argument supplied is %s\n", argv[1]);
-        char *group = argv[1];
-        char *number = argv[2];
-        char *command = argv[3];
-        printf("input = ", *group, *number, *command);
+        if (strcmp(argv[1],"nexa") == 0) {
+            char *group = argv[2];
+            char *number = argv[3];
+            char *command = argv[4];
+            printf("input = ", *group, *number, *command);
+        }
     }
 
     cleanup();
