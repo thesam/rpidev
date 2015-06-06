@@ -53,14 +53,14 @@ void kjell(char* msg) {
 
 void kjellOn(char outlet) {
     char msg[] = "1111111111010101010101000";
-    if (outlet = 'A') {
-        msg[11] = '0';
+    if (outlet == 'A') {
+        msg[11] == '0';
     }
-    if (outlet = 'B') {
-        msg[13] = '0';
+    if (outlet == 'B') {
+        msg[13] == '0';
     }
-    if (outlet = 'C') {
-        msg[15] = '0';
+    if (outlet == 'C') {
+        msg[15] == '0';
     }
     kjell(msg);
 //		a();        // 1
