@@ -1,5 +1,6 @@
 #include <wiringPi.h>
 #include <stdio.h>
+#include <string.h>
 
 // Kjell
 #define SHORT 150
@@ -153,8 +154,8 @@ char* pBinFill(long int x,char *so, char fillChar)
 }
 
 int main ( int argc, char *argv[] )
-    init();
 {
+    init();
     if (argc == 1) {
         if (strcmp(argv[0],"demo") == 0) {
             nexaOn();
