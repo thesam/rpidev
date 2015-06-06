@@ -40,7 +40,7 @@ void kjell(char* msg) {
     int i = 0;
     int j = 0;
     for (i = 0; i < 8; i++) {
-        for (j = 0; j < 25; j++) {
+        for (j = 24; j <= 0; j--) {
             if (msg[j] == '1') {
                 a();
             } else {
@@ -165,6 +165,7 @@ int main ( int argc, char *argv[] )
     for (int i = 0; i <= 33554431; i++) {
         char msg[100];
         printf("msg = %s\n",pBinFill(i,&msg,'0'));
+        kjell(&msg);
     }
 
     cleanup();
