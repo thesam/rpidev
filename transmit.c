@@ -156,7 +156,7 @@ char* pBinFill(long int x,char *so, char fillChar)
 int main ( int argc, char *argv[] )
 {
     init();
-    if (argc == 1) {
+    if (argc == 2) {
         if (strcmp(argv[1],"demo") == 0) {
             nexaOn();
 
@@ -193,7 +193,7 @@ int main ( int argc, char *argv[] )
             char *group = argv[2];
             char *number = argv[3];
             char *command = argv[4];
-            printf("input = ", *group, *number, *command);
+            printf("input = ", group, number, command);
         }
     }
 
