@@ -36,6 +36,20 @@ void b() {
     low(LONG);
 }
 
+void kjell(char* msg) {
+    int i = 0;
+    int j = 0;
+    for (i = 0; i < 8; i++) {
+        for (j = 0; j < 25; j++) {
+            if (msg[j] == '1') {
+                a();
+            } else {
+                b();
+            }
+        }
+    }
+}
+
 void kjellOn() {
 	int i = 0;
 	for (i = 0; i < 8; i++) {
@@ -64,39 +78,6 @@ void kjellOn() {
 		b();
 		b();
 		b();
-		low(VERYLONG);
-	}
-}
-
-void kjellOff() {
-	int i = 0;
-	for (i = 0; i < 8; i++) {
-		a();
-		a();
-		a();
-		a();
-		a();
-		a();
-		a();
-		a();
-		a();
-		a();
-		b();
-		b();
-		b();
-		a();
-		b();
-		a();
-		b();
-		a();
-		b();
-		a();
-		b();
-		a();
-		b();
-		b();
-		//TODO: a instead of b = off?
-		a();
 		low(VERYLONG);
 	}
 }
@@ -156,10 +137,16 @@ int main ( int argc, char *argv[] )
         printf("input = ", *group, *number, *command);
     }
     init();
-    kjellOn();
-    nexaOn();
-    delay(1000);
-    nexaOff();
-    kjellOff();
+
+//    kjellOn();
+//    nexaOn();
+//    delay(1000);
+//    nexaOff();
+//    kjellOff();
+    // Try all 2^25 combinations
+    for (int i = 0; i <= 33554431; i++) {
+        print("msg = %d",i);
+    }
+
     cleanup();
 }
