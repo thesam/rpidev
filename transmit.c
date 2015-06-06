@@ -127,6 +127,24 @@ void nexaOff() {
 	off();off();off();off();
 }
 
+// http://stackoverflow.com/questions/111928/is-there-a-printf-converter-to-print-in-binary-format
+#define kDisplayWidth 25
+
+char* pBinFill(long int x,char *so, char fillChar)
+{ // fill in array from right to left
+ char s[kDisplayWidth+1];
+ int  i=kDisplayWidth;
+ s[i--]=0x00;   // terminate string
+ do
+ { // fill in array from right to left
+  s[i--]=(x & 1) ? '1':'0';
+  x>>=1;  // shift right 1 bit
+ } while( x > 0);
+ while(i>=0) s[i--]=fillChar;    // fill with fillChar
+ sprintf(so,"%s",s);
+ return so;
+}
+
 int main ( int argc, char *argv[] )
 {
     if (argc == 4) {
@@ -145,7 +163,8 @@ int main ( int argc, char *argv[] )
 //    kjellOff();
     // Try all 2^25 combinations
     for (int i = 0; i <= 33554431; i++) {
-        printf("msg = %d\n",i);
+        char msg[100];
+        printf("msg = %s\n",pBinFill(i,&msg,'0'));
     }
 
     cleanup();
