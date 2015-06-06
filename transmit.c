@@ -47,6 +47,7 @@ void kjell(char* msg) {
                 b();
             }
         }
+        low(VERYLONG);
     }
 }
 
