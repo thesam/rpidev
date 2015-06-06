@@ -26,58 +26,77 @@ void cleanup() {
 	low(0);
 }
 
+void a() {
+    high(LONG);
+    low(SHORT);
+}
+
+void b() {
+    high(SHORT);
+    low(LONG);
+}
+
 void kjellOn() {
 	int i = 0;
 	for (i = 0; i < 8; i++) {
-		high(LONG);
-		low(SHORT);
-		high(LONG);
-		low(SHORT);
-		high(LONG);
-		low(SHORT);
-		high(LONG);
-		low(SHORT);
-		high(LONG);
-		low(SHORT);
-		high(LONG);
-		low(SHORT);
-		high(LONG);
-		low(SHORT);
-		high(LONG);
-		low(SHORT);
-		high(LONG);
-		low(SHORT);
-		high(LONG);
-		low(SHORT);
-		high(SHORT);
-		low(LONG);
-		high(SHORT);
-		low(LONG);
-		high(SHORT);
-		low(LONG);
-		high(LONG);
-		low(SHORT);
-		high(SHORT);
-		low(LONG);
-		high(LONG);
-		low(SHORT);
-		high(SHORT);
-		low(LONG);
-		high(LONG);
-		low(SHORT);
-		high(SHORT);
-		low(LONG);
-		high(LONG);
-		low(SHORT);
-		high(SHORT);
-		low(LONG);
-		high(LONG);
-		low(SHORT);
-		high(SHORT);
-		low(LONG);
-		high(SHORT);
-		low(LONG);
-		high(SHORT);
+		a();
+		a();
+		a();
+		a();
+		a();
+		a();
+		a();
+		a();
+		a();
+		a();
+		b();
+		b();
+		b();
+		a();
+		b();
+		a();
+		b();
+		a();
+		b();
+		a();
+		b();
+		a();
+		b();
+		b();
+		b();
+		low(VERYLONG);
+	}
+}
+
+void kjellOff() {
+	int i = 0;
+	for (i = 0; i < 8; i++) {
+		a();
+		a();
+		a();
+		a();
+		a();
+		a();
+		a();
+		a();
+		a();
+		a();
+		b();
+		b();
+		b();
+		a();
+		b();
+		a();
+		b();
+		a();
+		b();
+		a();
+		b();
+		a();
+		b();
+		b();
+		//TODO: a instead of b = off?
+		a();
 		low(VERYLONG);
 	}
 }
@@ -141,5 +160,6 @@ int main ( int argc, char *argv[] )
     nexaOn();
     delay(1000);
     nexaOff();
+    kjellOff();
     cleanup();
 }
