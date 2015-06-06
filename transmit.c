@@ -163,7 +163,7 @@ int main ( int argc, char *argv[] )
 //    nexaOff();
 //    kjellOff();
     // Try all 2^25 combinations
-    for (int i = 0; i <= 33554431; i++) {
+    for (int i = 33554431; i >=0 ; i--) {
         char msg[100];
         printf("msg = %s\n",pBinFill(i,&msg,'0'));
         kjell(&msg);
