@@ -36,8 +36,8 @@ void b() {
     low(LONG);
 }
 
-void log(char* msg) {
-    printf("%s",msg);
+void console(char* msg) {
+    printf("%s\n",msg);
 }
 
 void kjell(char* msg) {
@@ -58,75 +58,35 @@ void kjell(char* msg) {
 void kjellOn(char outlet) {
     char msg[] = "1111111111010101010101000";
     if (outlet == 'A') {
-        log("Kjell - Outlet A : ON");
+        console("Kjell - Outlet A : ON");
         msg[11] = '0';
     }
     if (outlet == 'B') {
-        log("Kjell - Outlet B : ON");
+        console("Kjell - Outlet B : ON");
         msg[13] = '0';
     }
     if (outlet == 'C') {
-        log("Kjell - Outlet C : ON");
+        console("Kjell - Outlet C : ON");
         msg[15] = '0';
     }
     kjell(msg);
-//		a();        // 1
-//		a();        // 1
-//		a();        // 1
-//		a();        // 1
-//		a();        // 1
-//		a();        // 1
-//		a();        // 1
-//		a();        // 1
-//		a();        // 1
-//		a();        // 1
-//		b();
-//		b();        // A pressed if b
-//		b();
-//		a();        // B
-//		b();
-//		a();        // C
-//		b();
-//		a();        // D
-//		b();
-//		a();        // E
-//		b();
-//		a();        // 1
-//		b();
-//		b();
-//		b();
 }
 
-void kjellOff() {
-	int i = 0;
-	for (i = 0; i < 8; i++) {
-		a();        // 1
-		a();        // 1
-		a();        // 1
-		a();        // 1
-		a();        // 1
-		a();        // 1
-		a();        // 1
-		a();        // 1
-		a();        // 1
-		a();        // 1
-		b();
-		b();
-		b();
-		a();        // 1
-		b();
-		a();        // 1
-		b();
-		a();        // 1
-		b();
-		a();        // 1
-		b();
-		b();        // 1
-		b();
-		a();
-		b();
-		low(VERYLONG);
-	}
+void kjellOff(char outlet) {
+    char msg[] = "1111111111010101010100010";
+    if (outlet == 'A') {
+        console("Kjell - Outlet A : OFF");
+        msg[11] = '0';
+    }
+    if (outlet == 'B') {
+        console("Kjell - Outlet B : OFF");
+        msg[13] = '0';
+    }
+    if (outlet == 'C') {
+        console("Kjell - Outlet C : OFF");
+        msg[15] = '0';
+    }
+    kjell(msg);
 }
 
 void o(){
@@ -202,20 +162,21 @@ int main ( int argc, char *argv[] )
         printf("input = ", *group, *number, *command);
     }
     init();
+    nexaOn();
 
     kjellOn('A');
-    nexaOn();
-    delay(1000);
+    delay(500);
     kjellOn('B');
-    delay(1000);
+    delay(500);
+    kjellOn('C');
+    delay(500);
+    kjellOff('A');
+    delay(500);
+    kjellOff('B');
+    delay(500);
+    kjellOff('C');
+
     nexaOff();
-    kjellOff();
-    // Try all 2^25 combinations
-//    for (int i = 33554431; i >=0 ; i--) {
-//        char msg[100];
-//        printf("msg = %s\n",pBinFill(i,&msg,'0'));
-//        kjell(&msg);
-//    }
 
     cleanup();
 }
