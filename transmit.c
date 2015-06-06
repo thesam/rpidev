@@ -36,6 +36,10 @@ void b() {
     low(LONG);
 }
 
+void log(char* msg) {
+    printf("%s",msg);
+}
+
 void kjell(char* msg) {
     int i = 0;
     int j = 0;
@@ -54,13 +58,16 @@ void kjell(char* msg) {
 void kjellOn(char outlet) {
     char msg[] = "1111111111010101010101000";
     if (outlet == 'A') {
-        msg[11] == '0';
+        log("Kjell - Outlet A : ON");
+        msg[11] = '0';
     }
     if (outlet == 'B') {
-        msg[13] == '0';
+        log("Kjell - Outlet B : ON");
+        msg[13] = '0';
     }
     if (outlet == 'C') {
-        msg[15] == '0';
+        log("Kjell - Outlet C : ON");
+        msg[15] = '0';
     }
     kjell(msg);
 //		a();        // 1
