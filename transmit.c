@@ -54,30 +54,62 @@ void kjell(char* msg) {
 void kjellOn() {
 	int i = 0;
 	for (i = 0; i < 8; i++) {
-		a();
-		a();
-		a();
-		a();
-		a();
-		a();
-		a();
-		a();
-		a();
-		a();
+		a();        // 1
+		a();        // 1
+		a();        // 1
+		a();        // 1
+		a();        // 1
+		a();        // 1
+		a();        // 1
+		a();        // 1
+		a();        // 1
+		a();        // 1
 		b();
 		b();
 		b();
-		a();
+		a();        // 1
+		b();
+		a();        // 1
+		b();
+		a();        // 1
+		b();
+		a();        // 1
+		b();
+		a();        // 1
+		b();
+		b();
+		b();
+		low(VERYLONG);
+	}
+}
+
+void kjellOff() {
+	int i = 0;
+	for (i = 0; i < 8; i++) {
+		a();        // 1
+		a();        // 1
+		a();        // 1
+		a();        // 1
+		a();        // 1
+		a();        // 1
+		a();        // 1
+		a();        // 1
+		a();        // 1
+		a();        // 1
+		b();
+		b();
+		b();
+		a();        // 1
+		b();
+		a();        // 1
+		b();
+		a();        // 1
+		b();
+		a();        // 1
+		b();
+		b();        // 1
 		b();
 		a();
-		b();
-		a();
-		b();
-		a();
-		b();
-		a();
-		b();
-		b();
 		b();
 		low(VERYLONG);
 	}
@@ -157,17 +189,17 @@ int main ( int argc, char *argv[] )
     }
     init();
 
-//    kjellOn();
-//    nexaOn();
-//    delay(1000);
-//    nexaOff();
-//    kjellOff();
+    kjellOn();
+    nexaOn();
+    delay(1000);
+    nexaOff();
+    kjellOff();
     // Try all 2^25 combinations
-    for (int i = 33554431; i >=0 ; i--) {
-        char msg[100];
-        printf("msg = %s\n",pBinFill(i,&msg,'0'));
-        kjell(&msg);
-    }
+//    for (int i = 33554431; i >=0 ; i--) {
+//        char msg[100];
+//        printf("msg = %s\n",pBinFill(i,&msg,'0'));
+//        kjell(&msg);
+//    }
 
     cleanup();
 }
