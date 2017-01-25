@@ -72,9 +72,10 @@ app.put('/lampa/:id/:ctrlState', function (req, res) {
 // List all sensors
 app.get('/sensor', function (req, res) {
     var cmd = 'tdtool -l';
+    res.setHeader('Content-Type', 'application/json');
     exec(cmd, function(error, stdout, stderr) {
       console.log(stdout);
-      res.send({'output': stdout});
+      res.send(JSON.stringify({'output': stdout}));
     })
 });
 
