@@ -1,3 +1,4 @@
+var exec = require('child_process').exec;
 var express = require('express');
 var app = express();
 app.use(express.bodyParser());
@@ -45,7 +46,6 @@ app.post('/lampa', function (req, res) {
 
 // Change state of a lamp
 app.put('/lampa/:id/:ctrlState', function (req, res) {
-    var exec = require('child_process').exec;
     //exec("ls -la", console.log);
     var id = req.params.id;
     var ctrlState = req.params.ctrlState;
@@ -68,6 +68,16 @@ app.put('/lampa/:id/:ctrlState', function (req, res) {
 });
 
 //TODO: app.delete(..)
+
+// List all sensors
+app.get('/sensor', function (req, res) {
+    var cmd = 'tdtool -l';
+    res.setHeader('Content-Type', 'application/json');
+    exec(cmd, function(error, stdout, stderr) {
+      console.log(stdout);
+      res.send(JSON.stringify({'output': stdout}));
+    })
+});
 
 app.use(express.static(__dirname + '/public'));
 

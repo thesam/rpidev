@@ -86,6 +86,11 @@ $(document).ready(function () {
             });
         });
     });
+    $.get('/sensor', function(sensordata) {
+      $('#sensors').append(
+        '<pre>' + sensordata.output + '</pre>'
+      )
+    });
 });
 
 function addLamp(ctrl) {
